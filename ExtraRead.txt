@@ -1,0 +1,11 @@
+Clean Architecture — JWT Token Authentication in REST API Using ASP.NET Core Identity
+https://medium.com/geekculture/clean-architecture-jwt-token-authentication-in-rest-api-using-asp-net-core-identity-639e4a8f3900
+
+The Repository-Service Pattern with DI and ASP.NET 5.0
+https://exceptionnotfound.net/the-repository-service-pattern-with-dependency-injection-and-asp-net-core/#:~:text=Overview,against%20a%20single%20Model%20class.
+
+[Fluent HTTP] Asp Net Core Tutorial | JWT Token Store and Send | C# | MVC- ep24
+https://www.youtube.com/watch?v=2ZQzMB5YA_U&t=2753s&ab_channel=NobleCauseSoftwareDevelopment
+
+Dependency-Injection
+https://www.codequality.rocks/post/use-dependency-injection

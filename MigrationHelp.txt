@@ -1,0 +1,5 @@
+EF Migration Steps
+==========================
+01. Enable-Migrations
+02. Add-Migration <Migration file name ex 'Initial'> (Or > dotnet ef migrations add <Migration file name> --project <project name>)
+03. Update-Database (Or > dotnet ef database update)

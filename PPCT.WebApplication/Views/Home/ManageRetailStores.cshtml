@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "ManageCompanies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Manage Companies</h1>
+@{
+    if (ViewBag.RetailStoreData != null)
+    {
+        <table class="table table-bordered">
+            <tbody>
+                @foreach (var i in ViewBag.RetailStoreData)
+                {
+                    <tr>
+                        <td>@i.RetailStoreId</td>
+                        <td>@i.RetailStoreName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            (Token Expired)Unauthorized request, please refresh page!
+        </div>
+        <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("ManageRetailStores", "Home")'">Refresh</button>
+    }
+}
