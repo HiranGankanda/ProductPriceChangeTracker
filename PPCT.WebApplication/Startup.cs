@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PPCT.WebApplication.APIAccess;
 using PPCT.WebApplication.Helpers;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace PPCT.WebApplication
 {
@@ -26,9 +27,11 @@ namespace PPCT.WebApplication
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IFlurlClientFactory, PerBaseUrlFlurlClientFactory>();
             services.AddSingleton<ReadTokenData>();
+            services.AddSingleton<JwtSecurityTokenHandler>();
+            //services.AddSingleton<IHttpContextAccessor>();
             #endregion
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

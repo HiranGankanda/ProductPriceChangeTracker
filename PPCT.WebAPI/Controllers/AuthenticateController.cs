@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using PPCT.DataAccessLayer;
-using PPCT.DataAccessLayer.CustomModels;
+using PPCT.DataSupport;
+using PPCT.DataSupport.CustomModels;
 using PPCT.RepositoryServices.JWTRepoServices;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace PPCT.WebAPI.Controllers
             {
                 IList<string> userRoles = await userManager.GetRolesAsync(user);
                 
-                var token = jwtAuthTokenGenerator.GenerateAccessToken_Token(user.Email, user.UserName, userRoles);
+                var token = jwtAuthTokenGenerator.GenerateAccessToken_Token(user.Email, user.UserName, user.FirstName+" " + user.LastName, userRoles);
                 var refreshToken = jwtAuthTokenGenerator.GenerateRefreshToken();                
 
                 _ = int.TryParse(configuration["JWT:RefreshTokenValidityInDays"], out int refreshTokenValidityInDays);

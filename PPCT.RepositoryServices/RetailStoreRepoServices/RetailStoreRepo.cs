@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using PPCT.DataAccessLayer;
-using PPCT.DataAccessLayer.DataModels.ProjectTableModels;
+using PPCT.DataSupport;
+using PPCT.DataSupport.DataModels.ProjectTableModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

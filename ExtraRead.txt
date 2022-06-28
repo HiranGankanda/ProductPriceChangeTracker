@@ -9,3 +9,13 @@ https://www.youtube.com/watch?v=2ZQzMB5YA_U&t=2753s&ab_channel=NobleCauseSoftwar
 
 Dependency-Injection
 https://www.codequality.rocks/post/use-dependency-injection
+
+
+In ASP.NET Core 3.0 and higher, RazorViewEngineOptions.AllowRecompilingViewsOnFileChange is not available.
+Surprised that refreshing a view while the app is running did not work, I discovered the following solution:
+
+Add Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation NuGet package to the project
+
+Add the following in Startup.cs:
+services.AddControllersWithViews().AddRazorRuntimeCompilation();
+https://docs.microsoft.com/en-us/aspnet/core/mvc/views/view-compilation?view=aspnetcore-6.0&viewFallbackFrom=aspnetcore-3.0&tabs=visual-studio#runtime-compilation

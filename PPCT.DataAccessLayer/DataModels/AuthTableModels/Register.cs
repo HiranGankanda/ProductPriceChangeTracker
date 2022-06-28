@@ -5,12 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPCT.DataAccessLayer
+namespace PPCT.DataSupport
 {
     public class Register
     {
         [Required(ErrorMessage = "User Name is required")]
         public string Username { get; set; }
+
+        [Required(ErrorMessage = "First Name is required")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Last Name is required")]
+        public string LastName { get; set; }
 
         [EmailAddress]
         [Required(ErrorMessage = "Email is required")]

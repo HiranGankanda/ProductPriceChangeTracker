@@ -1,7 +1,7 @@
 ﻿using Flurl.Http;
 using Flurl.Http.Configuration;
 using Microsoft.AspNetCore.Http;
-using PPCT.DataAccessLayer.CustomModels;
+using PPCT.DataSupport.CustomModels;
 using System.Threading.Tasks;
 
 namespace PPCT.WebApplication.APIAccess

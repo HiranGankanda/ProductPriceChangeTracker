@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPCT.DataAccessLayer
+namespace PPCT.DataSupport
 {
     public class Login
     {

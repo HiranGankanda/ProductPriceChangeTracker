@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PPCT.DataAccessLayer.DataModels.ProjectTableModels
+namespace PPCT.DataSupport.DataModels.ProjectTableModels
 {
     [Table("RetailStore_History")]
     public class RetailStore_History

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PPCT.DataAccessLayer
+namespace PPCT.DataSupport
 {
     [Table("CompanyProductPriceMargins")]
     public class CompanyProductPriceMargin

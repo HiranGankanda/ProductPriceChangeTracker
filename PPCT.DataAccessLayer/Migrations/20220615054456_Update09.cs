@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace PPCT.DataAccessLayer.Migrations
+namespace PPCT.DataSupport.Migrations
 {
     public partial class Update09 : Migration
     {

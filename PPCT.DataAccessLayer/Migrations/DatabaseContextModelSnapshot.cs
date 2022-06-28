@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PPCT.DataAccessLayer;
+using PPCT.DataSupport;
 
-namespace PPCT.DataAccessLayer.Migrations
+namespace PPCT.DataSupport.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
     partial class DatabaseContextModelSnapshot : ModelSnapshot
@@ -169,6 +169,12 @@ namespace PPCT.DataAccessLayer.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -272,6 +278,56 @@ namespace PPCT.DataAccessLayer.Migrations
                     b.ToTable("AgencyHistory");
                 });
 
+            modelBuilder.Entity("PPCT.DataAccessLayer.DataModels.ProjectTableModels.Product", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AgencyID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<string>("PackSize")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.HasKey("ProductId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("PPCT.DataAccessLayer.DataModels.ProjectTableModels.ProductPrice", b =>
+                {
+                    b.Property<int>("ProductPriceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("RetailPrice")
+                        .HasColumnType("float");
+
+                    b.HasKey("ProductPriceId");
+
+                    b.ToTable("ProductPrices");
+                });
+
             modelBuilder.Entity("PPCT.DataAccessLayer.DataModels.ProjectTableModels.ProductPrice_History", b =>
                 {
                     b.Property<int>("HistoryId")
@@ -358,6 +414,28 @@ namespace PPCT.DataAccessLayer.Migrations
                     b.ToTable("Products_History");
                 });
 
+            modelBuilder.Entity("PPCT.DataAccessLayer.DataModels.ProjectTableModels.RetailStore", b =>
+                {
+                    b.Property<int>("RetailStoreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("RetailStoreName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.HasKey("RetailStoreId");
+
+                    b.ToTable("RetailStore");
+                });
+
             modelBuilder.Entity("PPCT.DataAccessLayer.DataModels.ProjectTableModels.RetailStoreMarginRecord", b =>
                 {
                     b.Property<int>("RetailStoreMarginRecordID")
@@ -440,6 +518,29 @@ namespace PPCT.DataAccessLayer.Migrations
                     b.ToTable("RetailStoreMarginRecords_History");
                 });
 
+            modelBuilder.Entity("PPCT.DataAccessLayer.DataModels.ProjectTableModels.RetailStoreVATPercentage", b =>
+                {
+                    b.Property<int>("VATPercentageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("RetailStoreID")
+                        .HasColumnType("int");
+
+                    b.Property<double>("VATPercentageValue")
+                        .HasColumnType("float");
+
+                    b.HasKey("VATPercentageId");
+
+                    b.ToTable("RetailStoreVATPercentages");
+                });
+
             modelBuilder.Entity("PPCT.DataAccessLayer.DataModels.ProjectTableModels.RetailStoreVATPercentage_History", b =>
                 {
                     b.Property<int>("HistoryId")
@@ -514,101 +615,6 @@ namespace PPCT.DataAccessLayer.Migrations
                     b.HasKey("HistoryId");
 
                     b.ToTable("RetailStore_History");
-                });
-
-            modelBuilder.Entity("PPCT.DataAccessLayer.Product", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AgencyID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.Property<string>("PackSize")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
-
-                    b.HasKey("ProductId");
-
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("PPCT.DataAccessLayer.ProductPrice", b =>
-                {
-                    b.Property<int>("ProductPriceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("RetailPrice")
-                        .HasColumnType("float");
-
-                    b.HasKey("ProductPriceId");
-
-                    b.ToTable("ProductPrices");
-                });
-
-            modelBuilder.Entity("PPCT.DataAccessLayer.RetailStore", b =>
-                {
-                    b.Property<int>("RetailStoreId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<string>("RetailStoreName")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
-
-                    b.HasKey("RetailStoreId");
-
-                    b.ToTable("RetailStore");
-                });
-
-            modelBuilder.Entity("PPCT.DataAccessLayer.RetailStoreVATPercentage", b =>
-                {
-                    b.Property<int>("VATPercentageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<int>("RetailStoreID")
-                        .HasColumnType("int");
-
-                    b.Property<double>("VATPercentageValue")
-                        .HasColumnType("float");
-
-                    b.HasKey("VATPercentageId");
-
-                    b.ToTable("RetailStoreVATPercentages");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

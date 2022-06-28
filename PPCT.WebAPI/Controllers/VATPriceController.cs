@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PPCT.DataAccessLayer.DataModels.ProjectTableModels;
+using PPCT.DataSupport.DataModels.ProjectTableModels;
 using PPCT.RepositoryServices.VATRepoServices;
 using System;
 using System.Collections.Generic;
