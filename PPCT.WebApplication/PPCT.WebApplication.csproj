@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PPCT.DataAccessLayer\PPCT.DataSupport.csproj" />
+    <ProjectReference Include="..\PPCT.DataSupport\PPCT.DataSupport.csproj" />
   </ItemGroup>
 
 </Project>
