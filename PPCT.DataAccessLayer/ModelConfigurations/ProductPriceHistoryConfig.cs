@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PPCT.DataAccessLayer.DataModels.ProjectTableModels;
+using PPCT.DataSupport.DataModels.ProjectTableModels;
 
-namespace PPCT.DataAccessLayer.ModelConfigurations
+namespace PPCT.DataSupport.ModelConfigurations
 {
     public class ProductPriceHistoryConfig : IEntityTypeConfiguration<ProductPrice_History>
     {

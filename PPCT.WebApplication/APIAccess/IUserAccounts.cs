@@ -1,4 +1,4 @@
-﻿using PPCT.DataAccessLayer.CustomModels;
+﻿using PPCT.DataSupport.CustomModels;
 using System.Threading.Tasks;
 
 namespace PPCT.WebApplication.APIAccess

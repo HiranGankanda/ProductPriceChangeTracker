@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PPCT.DataAccessLayer;
+using PPCT.DataSupport;
 using PPCT.WebApplication.APIAccess;
 using PPCT.WebApplication.Helpers;
 using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace PPCT.WebApplication.Controllers
@@ -44,14 +45,22 @@ namespace PPCT.WebApplication.Controllers
                         HttpOnly = true,
                         SameSite = SameSiteMode.Strict
                     });
-                    Response.Cookies.Append("UserName", _tkReader.CurrentUserName(tokenData.AccessToken), new CookieOptions { IsEssential = true });
-                    //string Username = Request.Cookies["UserName"]?.ToString();
+                    Response.Cookies.Append("FullName", await CipherText.EncriptAsync(_tkReader.CurrentUserFullNameFromToken(tokenData.AccessToken)), new CookieOptions { 
+                        IsEssential = true,
+                        HttpOnly = true,
+                        SameSite = SameSiteMode.Strict
+                    });
+                    Response.Cookies.Append("Username", await CipherText.EncriptAsync(_tkReader.CurrentUserNameFromToken(tokenData.AccessToken)), new CookieOptions
+                    {
+                        IsEssential = true,
+                        HttpOnly = true,
+                        SameSite = SameSiteMode.Strict
+                    });
                     return RedirectToAction("Index", "Home");
                 }
-
                 return RedirectToAction("Login", "Account");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return RedirectToAction("Login", "Account");
             }

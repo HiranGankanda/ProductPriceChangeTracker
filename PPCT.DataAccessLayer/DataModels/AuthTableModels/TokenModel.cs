@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PPCT.DataAccessLayer.CustomModels
+namespace PPCT.DataSupport.CustomModels
 {
     public class TokenModel
     {

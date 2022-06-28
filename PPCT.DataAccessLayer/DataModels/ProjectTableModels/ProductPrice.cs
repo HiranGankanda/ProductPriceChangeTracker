@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PPCT.DataAccessLayer.DataModels.ProjectTableModels
+namespace PPCT.DataSupport.DataModels.ProjectTableModels
 {
     [Table("ProductPrices")]
     public class ProductPrice

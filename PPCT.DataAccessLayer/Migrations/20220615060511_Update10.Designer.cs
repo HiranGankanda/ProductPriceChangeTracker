@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PPCT.DataAccessLayer;
+using PPCT.DataSupport;
 
-namespace PPCT.DataAccessLayer.Migrations
+namespace PPCT.DataSupport.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
     [Migration("20220615060511_Update10")]

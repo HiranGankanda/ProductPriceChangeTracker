@@ -1,4 +1,4 @@
-﻿namespace PPCT.DataAccessLayer
+﻿namespace PPCT.DataSupport
 {
     public static class UserRoles
     {

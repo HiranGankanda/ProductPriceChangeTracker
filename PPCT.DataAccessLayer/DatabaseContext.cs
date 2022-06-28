@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PPCT.DataAccessLayer.DataModels.ProjectTableModels;
-using PPCT.DataAccessLayer.ModelConfigurations;
+using PPCT.DataSupport.DataModels.ProjectTableModels;
+using PPCT.DataSupport.ModelConfigurations;
 
-namespace PPCT.DataAccessLayer
+namespace PPCT.DataSupport
 {
     //public class DatabaseContext:DbContext
     public class DatabaseContext : IdentityDbContext<ApplicationUser>

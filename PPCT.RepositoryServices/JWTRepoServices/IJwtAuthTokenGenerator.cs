@@ -6,8 +6,8 @@ namespace PPCT.RepositoryServices.JWTRepoServices
 {
     public interface IJwtAuthTokenGenerator
     {
-        JwtSecurityToken GenerateAccessToken_JwtSecurityToken(string email, string userName, IList<string> userRoles);
-        string GenerateAccessToken_Token(string email, string userName, IList<string> userRoles);
+        JwtSecurityToken GenerateAccessToken_JwtSecurityToken(string email, string userName, string fullName, IList<string> userRoles);
+        string GenerateAccessToken_Token(string email, string userName, string fullName, IList<string> userRoles);
         JwtSecurityToken Verify(string token);
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
         JwtSecurityToken NewAccessToken_JwtSecurityToken(List<Claim> authClaims);

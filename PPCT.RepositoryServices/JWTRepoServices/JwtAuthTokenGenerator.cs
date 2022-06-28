@@ -25,14 +25,15 @@ namespace PPCT.RepositoryServices.JWTRepoServices
         #endregion
 
         #region InterfaceCalls
-        public JwtSecurityToken GenerateAccessToken_JwtSecurityToken(string email, string userName, IList<string> userRoles)
+        public JwtSecurityToken GenerateAccessToken_JwtSecurityToken(string email, string userName, string fullName, IList<string> userRoles)
         {
-            return GenarateAccessTokenJwtSecurityToken(email, userName, userRoles);
+            return GenarateAccessTokenJwtSecurityToken(email, userName, fullName, userRoles);
         }
-        public string GenerateAccessToken_Token(string email, string userName, IList<string> userRoles)
+        public string GenerateAccessToken_Token(string email, string userName, string fullName, IList<string> userRoles)
         {
-            return new JwtSecurityTokenHandler().WriteToken(GenarateAccessTokenJwtSecurityToken(email, userName, userRoles));
+            return new JwtSecurityTokenHandler().WriteToken(GenarateAccessTokenJwtSecurityToken(email, userName, fullName, userRoles));
         }
+        
         public JwtSecurityToken Verify(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -87,7 +88,7 @@ namespace PPCT.RepositoryServices.JWTRepoServices
         #endregion
 
         #region Supporting Methods
-        private JwtSecurityToken GenarateAccessTokenJwtSecurityToken(string email, string userName, IList<string> userRoles)
+        private JwtSecurityToken GenarateAccessTokenJwtSecurityToken(string email, string userName, string fullName, IList<string> userRoles)
         {
             try
             {
@@ -95,7 +96,8 @@ namespace PPCT.RepositoryServices.JWTRepoServices
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, email),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    new Claim(ClaimTypes.Name, userName)
+                    new Claim(ClaimTypes.Name, userName),
+                    new Claim(ClaimTypes.GivenName, fullName)
                 };
 
                 foreach (string userRole in userRoles)
